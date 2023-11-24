@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Outfit&family=Philosopher&family=Quicksand&family=Tajawal&display=swap");
+
+* {
+  font-family: "Tajawal", sans-serif;
+}
+
+*::-webkit-scrollbar {
+  background-color: transparent;
+
+  width: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: rgb(211, 211, 211);
+  border-radius: 50px;
+}
+*::-webkit-scrollbar-track {
+  background-color: white;
+}
+
+.loading > img {
+  border: 1px solid black;
+  animation: effect 1s linear infinite;
+}
+
+@keyframes effect {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+.MuiRating-iconFilled {
+  color: rgb(94, 94, 94);
+}
+/* .MuiRating-iconEmpty {
+  color: red !important;
+} */

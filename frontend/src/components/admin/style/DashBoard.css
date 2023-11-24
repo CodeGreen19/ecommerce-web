@@ -1,0 +1,30 @@
+.dashboard_options li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+  padding: 5px 10px;
+  cursor: pointer;
+  background-color: rgb(53, 53, 53);
+  border: 1px solid rgb(61, 61, 61);
+  color: rgb(255, 255, 255);
+  font-size: 1.2rem;
+}
+.dashboard_options li:hover {
+  background: #1b1b1b;
+}
+.dashboard_options > li.add {
+  background-color: rgb(0, 0, 0);
+  color: white;
+}
+
+.dashboard_options li > svg {
+  font-size: 1.1rem;
+}
+.dashboard_options li > span > svg {
+  font-size: 1.1rem;
+  color: rgb(255, 255, 255);
+  margin: 0 5px;
+}
+
+/* product  */

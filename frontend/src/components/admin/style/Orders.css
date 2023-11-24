@@ -1,0 +1,29 @@
+/* for all users lists  */
+.all_orders_list {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+}
+.all_orders_list li {
+  overflow: scroll;
+  padding: 5px 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.all_orders_list li::-webkit-scrollbar {
+  display: none;
+}
+.all_orders_list li span {
+  padding: 5px 10px;
+  border: 1px solid rgba(20, 20, 20, 0.219);
+  margin-left: 4px;
+  height: 35px;
+  font-size: 0.9rem;
+}
+.all_orders_list li span svg {
+  font-size: 1.1rem;
+}
+.all_orders_list li span:hover {
+  background-color: rgb(24, 24, 24);
+  color: white;
+  cursor: pointer;
+}

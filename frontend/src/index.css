@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .login_option_box {
+    @apply my-2 flex h-[60px]  cursor-pointer items-center border-[1px] border-[#9f9f9f] p-2 hover:border-[#000000];
+  }
+  .brand_style {
+    @apply cursor-pointer border-[1px] border-[black] bg-[#ffffff] p-10 text-[1.2rem] tracking-[2px] transition-[all]  duration-500;
+  }
+  .hero_button {
+    @apply m-[1px] border-[1px] border-[white] bg-[#2e2e2e] px-3 py-1 text-[0.9rem] tracking-[1px] text-[white];
+  }
+  .hero_title {
+    @apply my-8 text-center text-2xl;
+  }
+  .menu_span_icons {
+    @apply flex h-[140px] w-[140px] cursor-pointer  flex-col items-center justify-center gap-2 border-[1px] border-[#383838] tracking-[2px] text-[white] md:h-[250px] md:w-[250px];
+  }
+  .add_btn {
+    @apply h-full border-[1px] border-[#00000039] bg-[whitesmoke] px-4 text-[1.1rem];
+  }
+  .ls_1 {
+    @apply tracking-[1px];
+  }
+  .b_1 {
+    @apply border-[1px] border-[#2e2e2e];
+  }
+  .bt_1 {
+    @apply border-t-[1px] border-t-[#0000005c];
+  }
+  .bb_1 {
+    @apply border-b-[1px] border-b-[#0000005c];
+  }
+  .bb_4 {
+    @apply border-b-[4px] border-b-[#0000007e];
+  }
+}

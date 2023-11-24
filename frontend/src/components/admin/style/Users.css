@@ -1,0 +1,29 @@
+/* for all users lists  */
+.all_users_list {
+  display: grid;
+  grid-template-columns: 2fr 2fr 1.4fr 0.9fr;
+}
+.all_users_list li {
+  overflow: scroll;
+  padding: 5px 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.all_users_list li::-webkit-scrollbar {
+  display: none;
+}
+.all_users_list li span {
+  padding: 5px 10px;
+  border: 1px solid rgba(20, 20, 20, 0.219);
+  margin-left: 4px;
+  height: 35px;
+  font-size: 0.9rem;
+}
+.all_users_list li span svg {
+  font-size: 1.1rem;
+}
+.all_users_list li span:hover {
+  background-color: rgb(24, 24, 24);
+  color: white;
+  cursor: pointer;
+}

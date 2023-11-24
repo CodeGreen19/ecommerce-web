@@ -1,0 +1,104 @@
+.product_options > li {
+  position: relative;
+  padding: 6px 4px;
+}
+.product_options > li::before {
+  content: "";
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+}
+
+.createProduct_box input,
+.createProduct_box select,
+.createProduct_box button {
+  border: 1px solid rgba(0, 0, 0, 0.279);
+  outline: none;
+  padding: 10px 15px;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  background-color: white;
+  margin-bottom: 15px;
+}
+.createProduct_nameBox input:nth-child(1) {
+  width: 300px;
+}
+
+.createProduct_box textarea {
+  padding: 5px 15px;
+  resize: none;
+  background-color: white;
+  margin-bottom: 15px;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.233);
+  letter-spacing: 1px;
+}
+
+.createProduct_box button {
+  margin: 0;
+  margin-bottom: 15px;
+}
+
+.createProduct_box svg {
+  font-size: 1.15rem;
+  color: rgb(49, 49, 49);
+}
+.createProduct_box textarea {
+  width: 100%;
+}
+.size_table {
+  border: 1px solid rgba(43, 42, 42, 0.199);
+  margin-bottom: 10px;
+}
+.size_table td,
+.size_table th {
+  padding: 10px 15px;
+  text-align: center;
+  border: 1px solid #04040443;
+}
+
+/* for all products lists  */
+.all_products_list {
+  display: grid;
+  grid-template-columns: 2fr 2fr 1.2fr 0.9fr 0.6fr;
+}
+.all_products_list li {
+  overflow: scroll;
+  padding: 5px 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.all_products_list li::-webkit-scrollbar {
+  display: none;
+}
+.all_products_list li span {
+  padding: 5px 10px;
+  border: 1px solid rgba(20, 20, 20, 0.219);
+  margin: 2px;
+  height: 35px;
+}
+.all_products_list li span:hover {
+  background-color: rgb(24, 24, 24);
+  color: white;
+  cursor: pointer;
+}
+
+.all_products_size_table td {
+  border: 1px solid rgba(4, 2, 2, 0.238);
+  padding: 3px 18px;
+  font-size: 0.9rem;
+}
+
+@media screen and (max-width: 768px) {
+  .createProduct_box input,
+  .createProduct_box select,
+  .createProduct_box button {
+    padding: 10px;
+    margin-bottom: 5px;
+  }
+  .createProduct_nameBox input:nth-child(1) {
+    width: 100%;
+  }
+}

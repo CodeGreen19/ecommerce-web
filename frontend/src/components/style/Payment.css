@@ -1,0 +1,55 @@
+.payment_item_box .left_side li {
+  font-size: 1.1rem;
+  margin: 2px 10px;
+}
+.payment_item_box .left_side svg {
+  font-size: 1.2rem;
+}
+.right_side_payment .price_info > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.address_input_div > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.address_input_div > div > input,
+.address_input_div > div > select {
+  width: 98%;
+  padding: 10px 10px;
+  background-color: whitesmoke;
+  background-color: white;
+  font-size: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.375);
+  outline: none;
+  font-family: "Tajawal", sans-serif;
+  letter-spacing: 1px;
+  border-bottom: none;
+}
+.mobile_input {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.375) !important;
+}
+.address_input_div > div > input::placeholder {
+  letter-spacing: 1px;
+}
+
+@media screen and (min-width: 640px) {
+  .address_input_div > div {
+    flex-direction: row;
+  }
+  .address_input_div > div > input,
+  .address_input_div > div > select {
+    width: 48%;
+    padding: 10px 20px;
+    background-color: whitesmoke;
+    background-color: white;
+    font-size: 1.1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.375);
+    margin: 4px 0;
+  }
+}
