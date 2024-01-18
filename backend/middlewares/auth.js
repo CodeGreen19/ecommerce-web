@@ -1,16 +1,11 @@
-exports.isUserExist = (req, res, next) => {
-  const user = req.user;
-  console.log("user", user);
+// const User = require("../models/user");
+const ErrorHandler = require("./error");
 
-  if (user) {
-    res.status(200).json({
-      success: true,
-      message: "user exists",
-    });
-  } else {
-    res.status(201).json({
-      success: false,
-      message: "user does not exist",
-    });
+exports.isUserExist = async (req, res, next) => {
+  // const user = await User.findById("659d08a6c335bb1a86962f0d");
+  // req.user = user;
+  if (!req.user) {
+    return next(new ErrorHandler("please login first", 401));
   }
+  next();
 };

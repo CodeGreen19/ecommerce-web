@@ -1,6 +1,5 @@
 import React from "react";
 import google from "../image/google.png";
-import facebook from "../image/fb.png";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 
 function Login({ open, close }) {
@@ -21,10 +20,6 @@ function Login({ open, close }) {
           <div className="login_option_box" onClick={handleClickLogin}>
             <img src={google} alt="google" className="w-[35px] bg-white" />
             <span className="mx-2 text-[1.1rem]">continue with google</span>
-          </div>
-          <div className="login_option_box">
-            <img src={facebook} alt="facebook" className="w-[35px] bg-white" />
-            <span className="mx-2 text-[1.1rem]">continue with facebook</span>
           </div>
         </div>
         <button

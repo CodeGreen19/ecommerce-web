@@ -19,6 +19,12 @@ const userSchema = new mongoose.Schema({
     enum: ["admin", "user"],
     default: "user",
   },
+  favourite: [
+    {
+      type: mongoose.Schema.ObjectId,
+      ref: "product",
+    },
+  ],
   createdAt: {
     type: Date,
     default: Date.now,

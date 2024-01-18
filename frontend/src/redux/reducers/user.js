@@ -28,7 +28,7 @@ export const authReducer = createReducer(
     },
     logoutFail: (state, action) => {
       state.loading = false;
-      state.isAuthenticated = true;
+      state.isAuthenticated = false;
       state.error = action.payload;
     },
     AllUsersRequest: (state) => {
@@ -39,6 +39,50 @@ export const authReducer = createReducer(
       state.allUsers = action.payload;
     },
     AllUsersFail: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+    FavouriteRequest: (state) => {
+      state.loading = true;
+    },
+    FavouriteSuccess: (state, action) => {
+      state.loading = false;
+      state.message = action.payload.message;
+    },
+    FavouriteFail: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+    GetFavouriteRequest: (state) => {
+      state.loading = true;
+    },
+    GetFavouriteSuccess: (state, action) => {
+      state.loading = false;
+      state.favourite = action.payload.info;
+    },
+    GetFavouriteFail: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+    UpdateRoleRequest: (state) => {
+      state.loading = true;
+    },
+    UpdateRoleSuccess: (state, action) => {
+      state.loading = false;
+      state.message = action.payload.message;
+    },
+    UpdateRoleFail: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+    DeleteUserRequest: (state) => {
+      state.loading = true;
+    },
+    DeleteUserSuccess: (state, action) => {
+      state.loading = false;
+      state.message = action.payload.message;
+    },
+    DeleteUserFail: (state, action) => {
       state.loading = false;
       state.error = action.payload;
     },

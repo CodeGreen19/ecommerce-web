@@ -91,6 +91,11 @@
   font-size: 0.9rem;
 }
 
+/* category box  */
+.category_form input {
+  margin-bottom: 0px !important;
+}
+
 @media screen and (max-width: 768px) {
   .createProduct_box input,
   .createProduct_box select,

@@ -42,7 +42,10 @@ function Account() {
       </div>
       <div className="mt-4">
         <h2>manage account</h2>
-        <button className="my-1 bg-[#4c4c4c] px-2 py-1 text-[white] ">
+        <button
+          className="my-1 bg-[#4c4c4c] px-2 py-1 text-[white] "
+          onClick={logoutHandler}
+        >
           remove account <ArrowRightAltIcon />
         </button>
         <p>

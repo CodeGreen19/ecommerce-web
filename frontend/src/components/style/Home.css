@@ -127,7 +127,7 @@
 .footer_content_box > div {
   width: 100%;
   padding: 10px 10px;
-  height: 3.2rem;
+  height: 2.8rem;
   transition: all 0.4s;
   overflow: hidden;
 }
@@ -137,7 +137,7 @@
 .footer_content_box > div > h3 {
   letter-spacing: 2px;
   margin: 6px 0;
-  font-size: 1.07rem;
+  font-size: 0.8rem;
 }
 .footer_content_box > div > ul > li {
   font-size: 0.9rem;
@@ -147,7 +147,7 @@
 
 /* for soicial icons  */
 .social_icons > li > a > svg {
-  font-size: 1.8rem;
+  font-size: 1.4rem;
 }
 
 /* for foooter loacation svg  */
@@ -167,14 +167,15 @@
   margin-left: 5px;
   transform: translateY(-2px);
 }
-/* for hero image shoe box  */
-.hero_shoe_img_box {
-  animation: skewShoe 2s linear infinite;
-}
-.hero_shoe_img_box > button {
-  animation: skewShoe 2s linear infinite;
-}
+
 @media screen and (min-width: 740px) {
+  .footer_content_box > div > h3 {
+    font-size: 1rem;
+  }
+  /* for soicial icons  */
+  .social_icons > li > a > svg {
+    font-size: 1.7rem;
+  }
   .menu_button > svg {
     font-size: 2.2rem;
   }
@@ -200,23 +201,5 @@
   }
   .home_trending > div > p {
     font-size: 1.3vmax;
-  }
-  .hero_shoe_img_box {
-    animation: skewShoe 4s linear infinite;
-  }
-  .hero_shoe_img_box > button {
-    animation: skewShoe 4s linear infinite;
-  }
-}
-
-@keyframes skewShoe {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(0.95);
-  }
-  100% {
-    transform: scale(1);
   }
 }

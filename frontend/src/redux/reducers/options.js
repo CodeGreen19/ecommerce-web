@@ -4,7 +4,8 @@ export const optionsReducer = createReducer(
   {},
   {
     OptionRequest: (state, action) => {
-      state.option = action.payload;
+      state.option = action.payload.param;
+      state.isClicked = action.payload.clicked;
     },
   },
 );

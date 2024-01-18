@@ -1,9 +1,39 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Country, State } from "country-state-city";
 
-function Address() {
+function Address({ setAddressData, summery }) {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [country, setCountry] = useState("");
   const [state, setState] = useState("");
+  const [pinCode, setPinCode] = useState("");
+  const [village, setVillage] = useState("");
+  const [road, setRoad] = useState("");
+  const [mobileNo, setMobileNo] = useState("");
+
+  useEffect(() => {
+    // Update the address data in the Payment component when any field changes
+    setAddressData({
+      firstName,
+      lastName,
+      country,
+      state,
+      pinCode,
+      village,
+      road,
+      mobileNo,
+    });
+  }, [
+    firstName,
+    lastName,
+    country,
+    state,
+    pinCode,
+    village,
+    road,
+    mobileNo,
+    setAddressData,
+  ]);
   return (
     <div className=" w-full align-middle sm:mx-[5%] sm:w-[90%]">
       <div className="bt_1 bg-gray-200 p-1 sm:m-0">
@@ -17,8 +47,18 @@ function Address() {
       </div>
       <div className="address_input_div">
         <div>
-          <input type="text" placeholder="First Name" />
-          <input type="text" placeholder="Last Name" />
+          <input
+            type="text"
+            placeholder="First Name"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Last Name"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+          />
         </div>
 
         <div>
@@ -50,12 +90,33 @@ function Address() {
           </select>
         </div>
         <div>
-          <input type="text" placeholder="Village/City" />
-          <input type="text" placeholder="Road Adress" />
+          <input
+            type="text"
+            placeholder="Village/City"
+            value={village}
+            onChange={(e) => setVillage(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Road Adress (optional)"
+            value={road}
+            onChange={(e) => setRoad(e.target.value)}
+          />
         </div>
         <div>
-          <input type="text" placeholder="Pin Code" />
-          <input className="mobile_input" type="text" placeholder="Mobile No" />
+          <input
+            className="mobile_input"
+            type="text"
+            placeholder="Mobile No"
+            value={mobileNo}
+            onChange={(e) => setMobileNo(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Pin Code (optional)"
+            value={pinCode}
+            onChange={(e) => setPinCode(e.target.value)}
+          />
         </div>
       </div>
     </div>

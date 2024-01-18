@@ -71,10 +71,10 @@ function FooterContent() {
       >
         <h3>Download our app</h3>
         <ul className="download_app mt-3 flex w-full flex-col">
-          <li className="m-1 w-[140px] border-[1px] border-[#a4a3a3] bg-[black] px-3 py-3">
+          <li className="m-1 w-[145px] border-[1px] border-[#a4a3a3] bg-[black] px-3 py-3">
             Google Play <ShopTwoIcon />
           </li>
-          <li className="m-1 w-[140px] border-[1px] border-[#aeadad] bg-[black] px-3 py-3">
+          <li className="m-1 w-[145px] border-[1px] border-[#aeadad] bg-[black] px-3 py-3">
             App Store <AppleIcon />
           </li>
         </ul>

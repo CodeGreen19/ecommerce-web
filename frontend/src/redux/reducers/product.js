@@ -10,7 +10,7 @@ let initialState = {
   },
 };
 
-export const createProductReducer = createReducer(
+export const productReducer = createReducer(
   { initialState },
   {
     NewProductRequest: (state) => {
@@ -32,6 +32,17 @@ export const createProductReducer = createReducer(
       state.allProducts = action.payload.allProducts;
     },
     AllProductFail: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+    FilteredProductRequest: (state) => {
+      state.loading = true;
+    },
+    FilteredProductSuccess: (state, action) => {
+      state.loading = false;
+      state.filteredProducts = action.payload.filteredProducts;
+    },
+    FilteredProductFail: (state, action) => {
       state.loading = false;
       state.error = action.payload;
     },
@@ -57,6 +68,59 @@ export const createProductReducer = createReducer(
       state.loading = false;
       state.error = action.payload;
     },
+    DeleteProductRequest: (state) => {
+      state.loading = true;
+    },
+    DeleteProductSuccess: (state, action) => {
+      state.loading = false;
+      state.message = action.payload.message;
+    },
+    DeleteProductFail: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+
+    SearchOpen: (state) => {
+      state.searchOpen = true;
+    },
+    SearchClose: (state) => {
+      state.searchOpen = false;
+    },
+
+    clearError: (state) => {
+      state.error = null;
+    },
+    clearMessage: (state) => {
+      state.message = null;
+    },
+  },
+);
+export const productDetailReducer = createReducer(
+  {},
+  {
+    ProductDetailRequest: (state) => {
+      state.loading = true;
+    },
+    ProductDetailSuccess: (state, action) => {
+      state.loading = false;
+      state.product = action.payload.singleProduct;
+    },
+    ProductDetailFail: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+    GiveReviewRequest: (state) => {
+      state.loading = true;
+    },
+    GiveReviewSuccess: (state, action) => {
+      state.loading = false;
+      state.message = action.payload.message;
+    },
+    GiveReviewFail: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+
     clearError: (state) => {
       state.error = null;
     },

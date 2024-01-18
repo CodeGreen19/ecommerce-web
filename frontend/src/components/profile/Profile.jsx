@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import AutoText from "../home/AutoText";
 import Navbar from "../navbar/Navbar";
 import "../style/Profile.css";
@@ -7,18 +7,24 @@ import FooterContent from "../footer/FooterContent";
 import Footer from "../footer/Footer";
 import Login from "../login/Login";
 import Account from "./Account";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Orders from "./Orders";
 import WishList from "./WishList";
+import { myOrdersAction } from "../../redux/actions/order";
 
 function Profile() {
   const { user } = useSelector((state) => state.user);
+  const { myOrders } = useSelector((state) => state.order);
+  const dispatch = useDispatch();
   const text = `hi, ${user && user.name}`;
   const [openLogin, setOpenLogin] = useState(false);
   const [selected, setSelected] = useState("account");
   const optionsHandler = (select) => {
     setSelected(select);
   };
+  useEffect(() => {
+    dispatch(myOrdersAction());
+  }, [dispatch]);
   return (
     <Fragment>
       <Login open={openLogin} />
@@ -36,22 +42,22 @@ function Profile() {
         <div className="Profile_item_box flex h-[40%] w-full items-end justify-center">
           <ul className="flex gap-4 tracking-[1px]">
             <li
-              className={`${selected === "account" && "bb_4"}`}
+              className={`${selected === "account" && "bb_4"} cursor-pointer`}
               onClick={() => optionsHandler("account")}
             >
               Account
             </li>
             <li
-              className={`${selected === "orders" && "bb_4"}`}
+              className={`${selected === "orders" && "bb_4"} cursor-pointer`}
               onClick={() => optionsHandler("orders")}
             >
-              Orders(4)
+              Orders({myOrders && myOrders.length})
             </li>
             <li
-              className={`${selected === "wish" && "bb_4"}`}
+              className={`${selected === "wish" && "bb_4"} cursor-pointer`}
               onClick={() => optionsHandler("wish")}
             >
-              Wishlists(9)
+              Favourites({user && user.favourite.length})
             </li>
           </ul>
         </div>

@@ -34,9 +34,15 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: [true, "please give a color"],
   },
-  brand: {
+  category: [
+    {
+      type: String,
+      required: [true, "select a category"],
+    },
+  ],
+  height: {
     type: String,
-    required: [true, "please enter valid category"],
+    required: [true, "please enter valid size"],
   },
   stock: [
     {
@@ -74,6 +80,10 @@ const productSchema = new mongoose.Schema({
     required: true,
     ref: "user",
   },
+  sold: {
+    type: Number,
+  },
+
   createdAt: {
     type: Date,
     default: Date.now,

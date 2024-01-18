@@ -1,7 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Outfit&family=Philosopher&family=Quicksand&family=Tajawal&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300&display=swap");
 * {
-  font-family: "Tajawal", sans-serif;
+  font-family: "Outfit", sans-serif;
 }
 
 *::-webkit-scrollbar {
@@ -40,3 +39,22 @@
 /* .MuiRating-iconEmpty {
   color: red !important;
 } */
+
+@media screen and (max-width: 768px) {
+  .react-multiple-carousel__arrow {
+    background: transparent !important;
+  }
+}
+
+.react-multiple-carousel__arrow--left,
+.react-multiple-carousel__arrow--right {
+  z-index: 2;
+}
+.react-multiple-carousel__arrow--left::before,
+.react-multiple-carousel__arrow--right::before {
+  z-index: 1;
+}
+
+.mobile_search_item::-webkit-scrollbar {
+  display: none;
+}

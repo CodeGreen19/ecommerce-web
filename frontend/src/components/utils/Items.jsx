@@ -1,6 +1,6 @@
 // -------items -------
-exports.brands = ["Brand", "Puma", "Nike", "Adidas"];
-exports.colors = ["Colors", "Black", "White", "Red", "Green", "gray", "brown"];
+exports.heightArr = ["Height", "low-top", "high-top", "mid-top"];
+exports.colors = ["Colors", "Black", "White", "Red", "Green", "Gray", "Brown"];
 exports.sizes = [
   "size",
   "4.5",
@@ -38,11 +38,11 @@ exports.shoeSizes = [
 
 exports.toastOption = {
   style: {
-    border: "1px solid blue",
+    border: "1px solid gray",
     padding: "10px 14px",
     color: "black",
     backgroundColor: "white",
-    borderRadius: "0px",
+    borderRadius: "2px",
     fontSize: "1.1rem",
   },
 };

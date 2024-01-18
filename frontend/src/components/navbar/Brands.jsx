@@ -10,14 +10,14 @@ function Brands({ open }) {
             : "translate-x-[-30px] opacity-[0]"
         } brand_style`}
       >
-        adidas
+        Air force 1
       </div>
       <div
         className={`${
           open ? " scale-[1] opacity-[1] delay-500" : "scale-[0.7] opacity-[0]"
         } brand_style`}
       >
-        puma
+        Air force 2
       </div>
       <div
         className={`${
@@ -26,7 +26,7 @@ function Brands({ open }) {
             : "translate-x-[30px] opacity-[0]"
         } brand_style`}
       >
-        nike
+        Air force 3
       </div>
     </Fragment>
   );

@@ -1,61 +1,84 @@
-import React, { Fragment, useRef } from "react";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import { images as items } from "./Images";
+import React, { Fragment, useEffect } from "react";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import { allProduct } from "../../redux/actions/product";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
 function CarouselBox() {
-  const carouselRef = useRef();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { allProducts } = useSelector((state) => state.product);
 
-  const handleScrollLeft = () => {
-    if (carouselRef.current) {
-      const currentPosition = carouselRef.current.scrollLeft;
-      const newPosition = currentPosition - 400;
-      scrollToPosition(newPosition);
-    }
-  };
-
-  const handleScrollRight = () => {
-    if (carouselRef.current) {
-      const currentPosition = carouselRef.current.scrollLeft;
-      const newPosition = currentPosition + 400;
-      scrollToPosition(newPosition);
-    }
-  };
-
-  const scrollToPosition = (position) => {
-    if (carouselRef.current) {
-      carouselRef.current.style.scrollBehavior = "smooth";
-      carouselRef.current.scrollLeft = position;
-      setTimeout(() => {
-        carouselRef.current.style.scrollBehavior = "auto";
-      }, 500);
-    }
-  };
+  useEffect(() => {
+    dispatch(allProduct());
+  }, [dispatch]);
   return (
     <Fragment>
-      <div
-        ref={carouselRef}
-        className="carousel_box xl-[0px] relative flex h-[170px] gap-1 overflow-x-auto transition-all sm:h-[220px] md:h-[300px] xl:mx-[100px] xl:h-[330px] "
-      >
-        {items.map((item, i) => (
-          <div className="h-full flex-shrink-0 cursor-pointer pb-1" key={i}>
-            <img src={item.image} alt={item.title} className="h-full" />
-          </div>
-        ))}
-      </div>
-      <div className="relative h-2 w-full overflow-visible">
-        <button
-          className="left absolute left-[5px] top-[-50px] hidden border-[1px] border-[black] bg-white px-4 py-2 sm:block xl:left-[100px]"
-          onClick={handleScrollLeft}
+      {allProducts && (
+        <Carousel
+          additionalTransfrom={0}
+          arrows
+          autoPlay={false}
+          centerMode={false}
+          className=""
+          containerClass="w-full"
+          draggable
+          focusOnSelect={false}
+          infinite
+          itemClass=""
+          keyBoardControl
+          minimumTouchDrag={80}
+          pauseOnHover
+          renderArrowsWhenDisabled={false}
+          renderButtonGroupOutside={false}
+          responsive={{
+            desktop: {
+              breakpoint: {
+                max: 3000,
+                min: 1024,
+              },
+              items: 5,
+              partialVisibilityGutter: 40,
+            },
+            tablet: {
+              breakpoint: {
+                max: 1024,
+                min: 464,
+              },
+              items: 3,
+              partialVisibilityGutter: 30,
+            },
+            mobile: {
+              breakpoint: {
+                max: 464,
+                min: 0,
+              },
+              items: 2,
+              partialVisibilityGutter: 30,
+            },
+          }}
+          rewind={false}
+          rewindWithAnimation={false}
+          rtl={false}
+          shouldResetAutoplay
+          showDots={false}
+          sliderClass=""
+          slidesToSlide={1}
+          swipeable
         >
-          <ChevronLeftIcon />
-        </button>
-        <button
-          className="left absolute right-[5px] top-[-50px] hidden border-[1px] border-[black] bg-white px-4 py-2 sm:block xl:right-[100px]"
-          onClick={handleScrollRight}
-        >
-          <ChevronRightIcon />
-        </button>
-      </div>
+          {allProducts.map((item, i) => (
+            <div key={i}>
+              <img
+                src={item.images[0].url}
+                className="w-[100%]"
+                alt="productImg"
+                onClick={() => navigate(`/product/${item._id}`)}
+              />
+            </div>
+          ))}
+        </Carousel>
+      )}
     </Fragment>
   );
 }

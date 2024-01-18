@@ -5,16 +5,19 @@ import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 import AddIcon from "@mui/icons-material/Add";
 import DriveFolderUploadIcon from "@mui/icons-material/DriveFolderUpload";
 import Footer from "../../footer/Footer";
+import toast from "react-hot-toast";
 import Loading from "../../loading/Loading";
-import { brands, colors, sizes } from "../../utils/Items";
+import { heightArr, colors, sizes } from "../../utils/Items";
+import { categoryArr } from "../../utils/Dashboard";
 
 function CreateProduct() {
   const { loading } = useSelector((state) => state.product);
+
   const dispatch = useDispatch();
   const [images, setImages] = useState([]);
   const [name, setName] = useState([]);
   const [description, setDescription] = useState([]);
-  const [brand, setBrand] = useState([]);
+  const [height, setHeight] = useState([]);
   const [color, setColor] = useState([]);
   const [price, setPrice] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
@@ -22,8 +25,23 @@ function CreateProduct() {
   const [qty, setQty] = useState("");
   const [size, setSize] = useState("");
   const [qtyAndSizeArr, setQtyAndSizeArr] = useState([]);
+  // get category
+  const [category, setCategory] = useState([]);
   // ref
   const imageBtnRef = useRef();
+
+  // category handler
+  const categoryHandler = (item) => {
+    if (category.includes(item)) {
+      let newCategory = category.filter((exist) => exist !== item);
+      setCategory(newCategory);
+    } else {
+      setCategory((exists) => [...exists, item]);
+    }
+  };
+
+  console.log(category);
+  /// handle size and quantity
 
   const handleAddSizeAndQty = () => {
     if (size === "" || size === "size" || qty === "") return;
@@ -78,7 +96,18 @@ function CreateProduct() {
 
   // handle submit
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (
+      !name ||
+      !description ||
+      !price ||
+      !qtyAndSizeArr ||
+      !images ||
+      !category
+    ) {
+      return toast.error("Please fill all the fields");
+    }
     const productImages = [];
     images.forEach((image) => {
       productImages.push({ image: image });
@@ -93,11 +122,12 @@ function CreateProduct() {
     const data = {
       name,
       description,
+      category,
       price,
       color,
-      brand,
+      height,
       productImages,
-      user: "6545d0883811b0e29a671326",
+      user: "659d08a6c335bb1a86962f0d",
       stock: qtyAndSizeArr,
     };
     dispatch(createProduct(data));
@@ -121,8 +151,8 @@ function CreateProduct() {
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
               ></input>
-              <select onChange={(e) => setBrand(e.target.value)}>
-                {brands.map((item) => (
+              <select onChange={(e) => setHeight(e.target.value)}>
+                {heightArr.map((item) => (
                   <option value={item} key={item}>
                     {item}
                   </option>
@@ -185,6 +215,26 @@ function CreateProduct() {
                 ref={imageBtnRef}
               />
             </div>
+            {/* category  */}
+            <h3 className="ls_1 mt-3 text-[1.1rem]">
+              Select single or multiple category
+            </h3>
+            <form className="category_form mb-3">
+              {categoryArr &&
+                categoryArr.map((item) => (
+                  <div className="ml-1 flex items-center justify-start">
+                    <input
+                      type="checkbox"
+                      className="cursor-pointer"
+                      name={item.name}
+                      onClick={(e) => categoryHandler(e.target.name)}
+                    />{" "}
+                    <span className="mb-[5px] ml-1">{item.name}</span>
+                  </div>
+                ))}
+            </form>
+
+            {/* category  */}
             <button onClick={handleAddImage}>
               Add images <AddPhotoAlternateIcon />
             </button>

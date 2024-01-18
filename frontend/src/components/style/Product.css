@@ -6,6 +6,7 @@
 .product_filter_box {
   border-right: 1px solid rgba(52, 52, 52, 0.299);
   background-color: whitesmoke;
+  background-color: white;
   transition: all 0.3s;
 }
 
@@ -29,7 +30,7 @@
   height: 125px;
 }
 .filter_option_box2.add {
-  height: 255px;
+  height: 395px;
 }
 .filter_option_box3.add {
   height: 190px;
@@ -44,11 +45,5 @@
 @media screen and (max-width: 1280px) {
   .product_filter_box.add {
     transform: translateX(-100%);
-  }
-  .product_filter_box.add button {
-    transform: translateX(5px);
-  }
-  .product_filter_box.add svg {
-    transform: translateX(5px);
   }
 }

@@ -4,23 +4,30 @@ import AllProduct from "./AllProduct";
 import CreateProduct from "./CreateProduct";
 import EditProduct from "./EditProduct";
 import Options from "../Options";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { allProduct } from "../../../redux/actions/product";
 
 function Products() {
+  const dispatch = useDispatch();
   const { allProducts } = useSelector((state) => state.product);
   const [selected, setSelected] = useState("all");
   const [productId, setProductId] = useState("");
+
+  const handleAllsection = () => {
+    setSelected("all");
+    dispatch(allProduct());
+  };
   return (
     <Fragment>
-      <div className="hidden md:block">
-        <Options />
-      </div>
-      <div className="md:pl-[260px]">
+      <div className="sm:pl-[260px]">
+        <div>
+          <Options />
+        </div>
         <div className=" flex h-[70px] w-full items-end justify-center border-[1px] border-[#0000002c] bg-[#e8e8e8] sm:h-[90px] ">
           <ul className="product_options flex gap-12">
             <li
               className={selected === "all" && `before:bg-[black]`}
-              onClick={() => setSelected("all")}
+              onClick={handleAllsection}
             >
               Products {`(${allProducts && allProducts.length})`}
             </li>

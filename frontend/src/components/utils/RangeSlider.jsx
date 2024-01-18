@@ -4,16 +4,16 @@ import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 
 const PrettoSlider = styled(Slider)({
-  color: "gray",
-  height: 8,
+  color: "rgb(64,64,64)",
+  height: 1,
   borderRadius: "0",
   "& .MuiSlider-track": {
     border: "none",
   },
   "& .MuiSlider-thumb": {
-    height: 12,
-    width: 12,
-    borderRadius: "0",
+    height: 14,
+    width: 14,
+    borderRadius: "50%",
     backgroundColor: "black",
 
     border: "2px solid black",
@@ -46,15 +46,21 @@ const PrettoSlider = styled(Slider)({
   },
 });
 
-export default function RangeSlider() {
+export default function RangeSlider({
+  priceHandler,
+  defaultValue,
+  priceValue,
+}) {
   return (
     <Box sx={{ width: "100%" }}>
       <PrettoSlider
         valueLabelDisplay="auto"
         aria-label="pretto slider"
-        defaultValue={[0, 500]} // Set the initial value for the slider range
-        min={0} // Set the minimum value of the slider
-        max={1000}
+        value={priceValue}
+        defaultValue={[defaultValue.minPrice, defaultValue.maxPrice]}
+        min={0}
+        max={500}
+        onChange={priceHandler}
       />
     </Box>
   );

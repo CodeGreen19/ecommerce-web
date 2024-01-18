@@ -5,11 +5,22 @@ const {
   createProduct,
   getAllProduct,
   getSingleProduct,
+  updateProduct,
+  deleteSingleProduct,
+  getFilteredProduct,
+  giveReviews,
 } = require("../controllers/product");
+const { isUserExist } = require("../middlewares/auth");
 
 const router = express.Router();
-router.get("/create/new", createProduct);
+router.post("/create/new", createProduct);
 router.get("/all", getAllProduct);
+router.get("/filter", getFilteredProduct);
 router.get("/single/:id", getSingleProduct);
+router.put("/update/:id", updateProduct);
+router.put("/review/:id", isUserExist, giveReviews);
+
+// for admin
+router.delete("/delete/:id", deleteSingleProduct);
 
 module.exports = router;

@@ -2,24 +2,34 @@ import React, { Fragment, useState } from "react";
 import main_logo from "../image/main_logo.jpg";
 import { cart, search, user as userIcon } from "../icons/icons";
 import Brands from "./Brands";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Login from "../login/Login";
-function Navbar() {
+import { filterData, filterDataEmpty, navItems } from "../utils/ProductUtils";
+import { filteredProduct } from "../../redux/actions/product";
+
+function Navbar({ mobileSearchOption }) {
   const { user } = useSelector((state) => state.user);
+
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [hover, setHover] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
+  const [selectItem, setSelectItem] = useState("");
 
-  const navItems = [
-    { name: "MAN" },
-    { name: "WOMAN" },
-    { name: "KID" },
-    { name: "SPORTS" },
-    { name: "BRANDS" },
-    { name: "OUTLET" },
-  ];
-
+  // for filter products
+  const navItemHandler = (item) => {
+    setSelectItem(item);
+    navigate("/products");
+    filterDataEmpty();
+    filterData.category = item;
+    dispatch(filteredProduct(filterData));
+  };
+  // search
+  const handleSearch = () => {
+    dispatch({ type: "SearchOpen" });
+    navigate("/products");
+  };
   const handleAccount = () => {
     if (user) {
       navigate("/profile");
@@ -32,7 +42,7 @@ function Navbar() {
     <Fragment>
       <div className="relative z-30 flex h-[60px] items-center justify-between border-b-[1px] border-[#52525224] px-0 sm:h-[85px] sm:px-8">
         <div className="flex  h-full items-end">
-          <div className="h-full">
+          <div className=" h-full md:ml-0">
             <img
               src={main_logo}
               alt=""
@@ -49,10 +59,13 @@ function Navbar() {
             {navItems.map((item, index) => (
               <li
                 key={index}
+                onClick={() => navItemHandler(item.filter)}
                 className={`relative navItem_${item.name} cursor-pointer py-3 text-[18px] before:absolute before:bottom-[9px] before:left-1/2 before:h-[2px] before:w-0 before:rounded
             before:bg-black before:transition-[width,left] before:duration-300 hover:before:left-0 hover:before:w-full`}
                 onMouseEnter={() =>
-                  item.name === "BRANDS" ? setHover(true) : setHover(false)
+                  item.name === "Top Products"
+                    ? setHover(true)
+                    : setHover(false)
                 }
               >
                 {item.name}
@@ -62,7 +75,7 @@ function Navbar() {
         </div>
         <div className="nav_icons_box mr-2 self-end sm:self-center">
           <ul className="mb-3 flex items-center gap-4 sm:mb-0 sm:gap-6 ">
-            <li onClick={() => navigate("/products")}>{search}</li>
+            <li onClick={handleSearch}>{search}</li>
             <li onClick={() => navigate("/cart")}>{cart}</li>
             <li onClick={handleAccount}>{userIcon}</li>
           </ul>
@@ -80,6 +93,21 @@ function Navbar() {
         </div>
         <Login open={showLogin} close={setShowLogin} />
       </div>
+      {mobileSearchOption && (
+        <ul className="mobile_search_item m-auto flex w-[96vw] items-center justify-start overflow-x-scroll md:hidden">
+          {navItems.map((item, index) => (
+            <li
+              className={`b_1 m-1 ${
+                selectItem === item.filter ? "bg-[#1c1c1c] text-white" : ""
+              } flex-none px-3 py-1 text-[0.9rem]`}
+              key={index}
+              onClick={() => navItemHandler(item.filter)}
+            >
+              {item.name}
+            </li>
+          ))}
+        </ul>
+      )}
     </Fragment>
   );
 }
