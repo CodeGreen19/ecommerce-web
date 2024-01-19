@@ -22,7 +22,7 @@ router.post("/checkout", async (req, res) => {
     ],
 
     mode: "payment",
-    success_url: `http://localhost:4000/api/payment/success/${orderId}`,
+    success_url: `${process.env.FRONTEND_URL}payment/success/${orderId}`,
     cancel_url: `${process.env.FRONTEND_URL}payment/cancel`,
   });
 

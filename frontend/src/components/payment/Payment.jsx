@@ -40,7 +40,7 @@ function Payment() {
     dispatch(orderAction(info));
   };
   useEffect(() => {
-    dispatch(getCartAction({ userId: "659d08a6c335bb1a86962f0d" }));
+    dispatch(getCartAction());
   }, [dispatch]);
   return (
     <Fragment>
