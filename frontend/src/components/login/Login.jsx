@@ -4,7 +4,10 @@ import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 
 function Login({ open, close }) {
   const handleClickLogin = () => {
-    window.open(`http://localhost:4000/api/user/google/login`, "_self");
+    window.open(
+      `https://shoe-safar-ecommerce.onrender.com/api/user/google/login`,
+      "_self",
+    );
   };
   return (
     <div
