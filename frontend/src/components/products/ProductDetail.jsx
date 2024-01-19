@@ -19,7 +19,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Reviews from "./Reviews";
-import { addToBagAction } from "../../redux/actions/cart";
+import { addToBagAction, getCartAction } from "../../redux/actions/cart";
 import { favouriteAction, loadUser } from "../../redux/actions/user";
 
 function ProductDetail() {
@@ -38,6 +38,8 @@ function ProductDetail() {
 
   const [reviewRating, setReviewRatings] = useState("");
   const [reviewComment, setReviewComment] = useState("");
+  //loading
+  const [bagClicked, setBagClicked] = useState(false);
 
   // selected size
   const [size, setSize] = useState("");
@@ -74,6 +76,7 @@ function ProductDetail() {
   // add to bag
   const addToBag = () => {
     setSize("");
+    setBagClicked(true);
     let info = {
       color: product.color,
       name: product.name,
@@ -83,7 +86,10 @@ function ProductDetail() {
       img: product.images[0].url,
       productId: id,
     };
-    dispatch(addToBagAction(info));
+    dispatch(addToBagAction(info)).then(() => {
+      dispatch(getCartAction());
+      setBagClicked(false);
+    });
   };
   useEffect(() => {
     dispatch(DetailProduct(id));
@@ -167,7 +173,7 @@ function ProductDetail() {
                   className="my-3 flex items-center border-[1px] border-[black] bg-[#3a3a3a] p-3 px-6 text-[0.9rem] tracking-[1px] text-white md:text-[1.1rem]"
                   onClick={addToBag}
                 >
-                  {cartLoading ? "add..." : "Add To Bag"}{" "}
+                  {cartLoading && bagClicked ? "add..." : "Add To Bag"}{" "}
                   <span className="mx-1">{cart}</span>
                 </button>
                 <button

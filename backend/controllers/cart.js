@@ -6,6 +6,10 @@ const Product = require("../models/product.js");
 
 // store in data
 exports.cartItems = tryCatchHandler(async (req, res) => {
+  if (!req.user) {
+    res.json({ success: false });
+    return;
+  }
   const cartItems = await Cart.find({ userId: req.user._id });
   let subtotal = 0;
   let shippingCost = 15;
@@ -113,25 +117,6 @@ exports.updateQty = tryCatchHandler(async (req, res, next) => {
     await cartItem.save();
     await product.save();
   }
-
-  // // cart
-  // const cart = await Cart.find({ userId: req.user._id });
-  // if (!cart) {
-  //   return next(new ErrorHandler("cart Item not found", 401));
-  // }
-  // cart.forEach(async (item, i) => {
-
-  //   if (item._id.toString() === itemId.toString()) {
-  //     if (action === "increase") {
-  //       cart[i].qty += 1;
-  //     } else if (action === "decrease" && cart[i].qty > 1) {
-  //       cart[i].qty -= 1;
-  //     }
-
-  //     // Save the updated cart item
-  //     await cart[i].save();
-  //   }
-  // });
 
   res.status(200).json({
     success: true,

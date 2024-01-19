@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import main_logo from "../image/main_logo.jpg";
 import { cart, search, user as userIcon } from "../icons/icons";
 import Brands from "./Brands";
@@ -7,9 +7,11 @@ import { useNavigate } from "react-router-dom";
 import Login from "../login/Login";
 import { filterData, filterDataEmpty, navItems } from "../utils/ProductUtils";
 import { filteredProduct } from "../../redux/actions/product";
+import { getCartAction } from "../../redux/actions/cart";
 
 function Navbar({ mobileSearchOption }) {
   const { user } = useSelector((state) => state.user);
+  const { cart: cartItems } = useSelector((state) => state.cart);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -37,6 +39,10 @@ function Navbar({ mobileSearchOption }) {
       setShowLogin(true);
     }
   };
+
+  useEffect(() => {
+    dispatch(getCartAction());
+  }, [dispatch]);
 
   return (
     <Fragment>
@@ -76,7 +82,14 @@ function Navbar({ mobileSearchOption }) {
         <div className="nav_icons_box mr-2 self-end sm:self-center">
           <ul className="mb-3 flex items-center gap-4 sm:mb-0 sm:gap-6 ">
             <li onClick={handleSearch}>{search}</li>
-            <li onClick={() => navigate("/cart")}>{cart}</li>
+            <li onClick={() => navigate("/cart")} className="relative">
+              {cart}
+              {cartItems && cartItems.length > 0 && (
+                <span className="absolute left-[1.5px] top-[-3px] flex h-[17px] w-[17px] cursor-pointer  items-center justify-center rounded-full bg-[#000000] text-[0.7rem] text-[#ffffff]">
+                  {cartItems.length}
+                </span>
+              )}
+            </li>
             <li onClick={handleAccount}>{userIcon}</li>
           </ul>
         </div>

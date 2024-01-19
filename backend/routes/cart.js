@@ -8,7 +8,7 @@ const {
 const { isUserExist } = require("../middlewares/auth");
 const router = express.Router();
 
-router.post("/all", isUserExist, cartItems);
+router.get("/all", cartItems);
 router.post("/addtobag", isUserExist, addToBag);
 router.put("/qty", isUserExist, updateQty);
 router.delete("/delete/:id", deleteFromBag);

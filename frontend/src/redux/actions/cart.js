@@ -11,7 +11,7 @@ export const getCartAction = () => async (dispatch) => {
       type: "GetCartRequest",
     });
 
-    const { data } = await axios.post(`/api/cart/all`, config);
+    const { data } = await axios.get(`/api/cart/all`, config);
 
     dispatch({
       type: "GetCartSuccess",
