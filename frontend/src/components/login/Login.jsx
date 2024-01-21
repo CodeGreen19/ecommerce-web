@@ -1,13 +1,11 @@
 import React from "react";
 import google from "../image/google.png";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import { baseUrl } from "../utils/url/BaseUrl";
 
 function Login({ open, close }) {
   const handleClickLogin = () => {
-    window.open(
-      `https://shoe-safar-ecommerce.onrender.com/api/user/google/login`,
-      "_self",
-    );
+    window.open(`${baseUrl}/api/user/google/login`, "_self");
   };
   return (
     <div

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { baseUrl } from "../../components/utils/url/BaseUrl";
 const config = {
   headers: { "Content-Type": "application/json" },
   withCredentials: true,
@@ -24,7 +25,7 @@ export const orderAction = (info) => async (dispatch) => {
     };
     // payment method -------
     const { data: getUrl } = await axios.post(
-      `/api/payment/checkout`,
+      `${baseUrl}/api/payment/checkout`,
       newData,
       config,
     );

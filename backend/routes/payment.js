@@ -22,8 +22,8 @@ router.post("/checkout", async (req, res) => {
     ],
 
     mode: "payment",
-    success_url: `${process.env.FRONTEND_URL}payment/success/${orderId}`,
-    cancel_url: `${process.env.FRONTEND_URL}payment/cancel`,
+    success_url: `${process.env.FRONTEND_URL}/api/payment/success/${orderId}`,
+    cancel_url: `${process.env.FRONTEND_URL}/cancel`,
   });
 
   res.json({ url: session.url });
@@ -40,7 +40,7 @@ router.get(
     });
     await order.save();
 
-    res.redirect(`${process.env.FRONTEND_URL}payment/success`);
+    res.redirect(`${process.env.FRONTEND_URL}/payment/success`);
   })
 );
 

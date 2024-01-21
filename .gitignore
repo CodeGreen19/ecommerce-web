@@ -3,7 +3,7 @@
 /frontend/node_modules
 /frontend/.pnp
 .pnp.js
-
+/.env
 
 /frontend/coverage
 
