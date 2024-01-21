@@ -49,13 +49,13 @@ function Address({ setAddressData, summery }) {
         <div>
           <input
             type="text"
-            placeholder="First Name"
+            placeholder="first name"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
           />
           <input
             type="text"
-            placeholder="Last Name"
+            placeholder="last name"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
           />
@@ -67,7 +67,7 @@ function Address({ setAddressData, summery }) {
             value={country}
             onChange={(e) => setCountry(e.target.value)}
           >
-            <option value="">Country</option>
+            <option value="">country</option>
             {Country &&
               Country.getAllCountries().map((item) => (
                 <option key={item.isoCode} value={item.isoCode}>
@@ -80,7 +80,7 @@ function Address({ setAddressData, summery }) {
             value={state}
             onChange={(e) => setState(e.target.value)}
           >
-            <option value="">State</option>
+            <option value="">state</option>
             {State &&
               State.getStatesOfCountry(country).map((item) => (
                 <option key={item.isoCode} value={item.isoCode}>
@@ -92,13 +92,13 @@ function Address({ setAddressData, summery }) {
         <div>
           <input
             type="text"
-            placeholder="Village/City"
+            placeholder="village/city"
             value={village}
             onChange={(e) => setVillage(e.target.value)}
           />
           <input
             type="text"
-            placeholder="Road Adress (optional)"
+            placeholder="road adress (optional)"
             value={road}
             onChange={(e) => setRoad(e.target.value)}
           />
@@ -107,13 +107,13 @@ function Address({ setAddressData, summery }) {
           <input
             className="mobile_input"
             type="text"
-            placeholder="Mobile No"
+            placeholder="mobile no"
             value={mobileNo}
             onChange={(e) => setMobileNo(e.target.value)}
           />
           <input
             type="text"
-            placeholder="Pin Code (optional)"
+            placeholder="pin code (optional)"
             value={pinCode}
             onChange={(e) => setPinCode(e.target.value)}
           />

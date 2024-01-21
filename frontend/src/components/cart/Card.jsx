@@ -1,6 +1,6 @@
 import React from "react";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
-import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+// import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import { useDispatch } from "react-redux";
 import {
   deleteToBagAction,
@@ -67,9 +67,9 @@ function Card({ cartInfo }) {
         </div>
       </div>
       <div className=" absolute bottom-3 right-3 flex gap-3">
-        <button>
+        {/* <button>
           <FavoriteBorderOutlinedIcon />
-        </button>
+        </button> */}
         <button onClick={() => DeleteHandler(cartInfo._id)}>
           <DeleteOutlineOutlinedIcon />
         </button>

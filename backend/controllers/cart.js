@@ -103,9 +103,11 @@ exports.updateQty = tryCatchHandler(async (req, res, next) => {
 
   if (action === "increase") {
     cartItem.qty += 1;
+    cartItem.price = Number(cartItem.price) + Number(cartItem.price);
   }
   if (action === "decrease" && cartItem.qty > 1) {
     cartItem.qty -= 1;
+    cartItem.price = Number(cartItem.price) - Number(cartItem.price);
   }
 
   if (cartItem.qty <= qty && action === "increase") {

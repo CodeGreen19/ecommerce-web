@@ -34,7 +34,7 @@ function Orders() {
                     <span className="hidden sm:inline-block">Status:</span>{" "}
                     <span
                       className={`${
-                        data.status === "deliverd"
+                        data.status === "delivered"
                           ? "text-[red]"
                           : "text-[green]"
                       }`}
