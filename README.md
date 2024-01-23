@@ -47,6 +47,6 @@ Feel free to customize ShoeSafari according to your preferences. Add new feature
 ### Deploy
 
 - **Deploy:** This Project deployed onrender.com.
-- **Link to Project:** [https://codegreen-portfolio.onrender.com/](https://shoe-safar-ecommerce.onrender.com))
+- **Link to Project:** [https://shoe-safar-ecommerce.onrender.com/](https://shoe-safar-ecommerce.onrender.com))
 - How to reach me **codegreen19s@gmail.com**
 
