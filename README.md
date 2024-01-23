@@ -19,7 +19,7 @@ Welcome to ShoeSafari, your one-stop destination for an unparalleled shoe shoppi
   
 ## Dashboard
 
-- **Dashboard ** visit profits and revenue with charts .
+- Dashboard: visit profits and revenue with charts .
 - **Products:** This Section is used for create, update and delete product and see all the product Info.
 - **Users:** Registered users are shown here with curd operation .
 - **Orders** Handle All the actions related to Orders.
