@@ -7,6 +7,7 @@ import Footer from "../../footer/Footer";
 import { singleProduct, updateProduct } from "../../../redux/actions/product";
 import { useNavigate } from "react-router-dom";
 import CancelIcon from "@mui/icons-material/Cancel";
+import { sizes } from "../../utils/ProductUtils";
 
 function EditProduct({ productId }) {
   const { singleProduct: productInfo } = useSelector((state) => state.product);
@@ -31,7 +32,7 @@ function EditProduct({ productId }) {
 
   // -------items -------
 
-  let sizes = ["size", "4.5", "5", "5.5", "6", "6.5", "7", "7.5"];
+  // let sizes = ["size", "4.5", "5", "5.5", "6", "6.5", "7", "7.5"];
 
   // -------items -------
 
