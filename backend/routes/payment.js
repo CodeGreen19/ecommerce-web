@@ -38,7 +38,6 @@ router.get(
     order.cartItems.forEach(async (id) => {
       await Cart.findByIdAndDelete(id);
     });
-    order.cartItems = [];
     await order.save();
 
     res.redirect(`${process.env.FRONTEND_URL}/payment/success`);

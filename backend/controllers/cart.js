@@ -63,6 +63,7 @@ exports.addToBag = tryCatchHandler(async (req, res, next) => {
     price,
     size,
     productId,
+    mainPrice: price,
   };
   const cart = await Cart.create(storedInBag);
   // update product stock
@@ -103,11 +104,11 @@ exports.updateQty = tryCatchHandler(async (req, res, next) => {
 
   if (action === "increase") {
     cartItem.qty += 1;
-    cartItem.price = Number(cartItem.price) + Number(cartItem.price);
+    cartItem.price = cartItem.price + cartItem.mainPrice;
   }
   if (action === "decrease" && cartItem.qty > 1) {
     cartItem.qty -= 1;
-    cartItem.price = Number(cartItem.price) - Number(cartItem.price);
+    cartItem.price = cartItem.price - cartItem.mainPrice;
   }
 
   if (cartItem.qty <= qty && action === "increase") {

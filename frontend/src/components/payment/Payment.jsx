@@ -37,6 +37,8 @@ function Payment() {
     });
     info.cartItems = cartItems;
 
+    console.log(info);
+
     dispatch(orderAction(info));
   };
   useEffect(() => {

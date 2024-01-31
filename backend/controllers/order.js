@@ -18,9 +18,12 @@ exports.createOrder = tryCatchHandler(async (req, res, next) => {
     pinCode,
     cartItems,
   } = req.body;
-  if ((!firstName, !lastName, !village, !country, !state, !mobileNo)) {
+  if (
+    (!firstName, !lastName, !village, !country, !state, !mobileNo, !cartItems)
+  ) {
     return next(new ErrorHandler("please fill all the fields", 404));
   }
+  console.log(cartItems);
 
   const order = await Order.create({
     userId: req.user._id,
